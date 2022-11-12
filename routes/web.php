@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\controladorViews;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', function () {
 
 Route::view('bookRegister','bookRegister');
 Route::view('autores','autores');
+
+Route::post('registerBook',[controladorViews::class,'controlBookRegister']);
+Route::post('registerAutor',[controladorViews::class,'controlAutoresRegister']);

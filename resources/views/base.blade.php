@@ -3,7 +3,7 @@
     <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Diario Laravel</title>
+        <title>Librería AT</title>
         <link rel="stylesheet" href="scss/_variables.scss">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
@@ -103,18 +103,16 @@
                     @yield('content')
                 </div>
             </div>
-        </div>
-        <div class="bg-secondary bg-gradient text-center" role="alert">
-            Bibliotecas AT {{date('Y')}} CopyRigth® 
-  
-            <?php 
-            date_default_timezone_set('America/Mexico_City');
-          
-            $fechaActual = date('d/m/y h:i:s');
-          
-            echo "$fechaActual <br>";
-            
-            ?>
+            <div class="alert alert-dark text-center mx-100%" role="alert">
+                Bibliotecas AT {{date('Y')}} CopyRigth® 
+                <?php 
+                date_default_timezone_set('America/Mexico_City');
+              
+                $fechaActual = date('d/m/y h:i:s');
+              
+                echo "$fechaActual";
+                ?>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
