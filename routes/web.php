@@ -43,9 +43,8 @@ Route::get('consultaAutores/{id}/edit', [controllertbautores::class,'edit'])->na
 //Ruta para actualizar los autores
 Route::put('consultaAutores/{id}',[controllertbautores::class, 'update'])->name('autoresUpdate.update');
 
-/*Show Autor*
-Route::get('autores/{id}/show', [controllertbautores::class,'show'])->name('autores.show');
+//Ruta para consultar Autores por ID para el modal Eliminar
+Route::get('consultaAutores/{id}/show', [controllertbautores::class,'show'])->name('autoresShow.show');
 
-/*Delete Autor
-Route::delete('autores/{id}', [controllertbautores::class,'destroy'])->name('autores.destroy');
-*/
+//Ruta para Eliminar Autores
+Route::delete('consultaAutores/{id}', [controllertbautores::class,'destroy'])->name('autoresDelete.destroy');

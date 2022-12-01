@@ -55,7 +55,7 @@ class controllertbautores extends Controller
     public function show($id){
         $consultaId = DB::table('tbautores')->where('idAutor',$id)->frist();
 
-        return view('#DELETE',compact('consultaId'));
+        return view('deleteAutores',compact('consultaId'));
     }
 
     /**
