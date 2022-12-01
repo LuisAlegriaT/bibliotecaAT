@@ -26,23 +26,26 @@ Route::view('autores','autores');
 Route::post('registerBook',[controladorViews::class,'controlBookRegister']);
 Route::post('registerAutor',[controladorViews::class,'controlAutoresRegister']);
 
-//ruta para llegar a autores
-Route::get('autores/create',[controllertbautores::class,'create'])->name('autores.create');
 
-/*Store Autor*/
+////////////////////////////////////////INSETAR AUTORES////////////////////////////////////////////////////////////////
+//ruta para llegar a la vista autores
+Route::get('autores/create',[controllertbautores::class,'create'])->name('autores.create');
+//ruta para insertar autores
 Route::post('autores', [controllertbautores::class,'store'])->name('autores.store');
 
-/*Index Autor*/
-Route::get('autores', [controllertbautores::class,'index'])->name('autores.index');
 
-/*Edit Autor*/
-Route::get('autores/{id}/edit', [controllertbautores::class,'edit'])->name('autores.edit');
+//Ruta para llegar a la vista consultaAutores con la consulta de todos los autores
+Route::get('consultaAutores', [controllertbautores::class,'index'])->name('autoresC.index');
 
-/*Update Autor*/
-Route::put('autores/{id}', [controllertbautores::class,'update'])->name('autores.update');
+//Ruta para consultar un Autor por su ID
+Route::get('consultaAutores/{id}/edit', [controllertbautores::class,'edit'])->name('autoresEdit.edit');
 
-/*Show Autor*/
+//Ruta para actualizar los autores
+Route::put('consultaAutores/{id}',[controllertbautores::class, 'update'])->name('autoresUpdate.update');
+
+/*Show Autor*
 Route::get('autores/{id}/show', [controllertbautores::class,'show'])->name('autores.show');
 
-/*Delete Autor*/
+/*Delete Autor
 Route::delete('autores/{id}', [controllertbautores::class,'destroy'])->name('autores.destroy');
+*/

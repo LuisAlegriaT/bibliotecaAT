@@ -14,9 +14,9 @@ class controllertbautores extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $consultaA=DB::table('tbautores')->get();
+        return view('consultaAutores',compact('consultaA'));
     }
 
     /**
@@ -67,7 +67,7 @@ class controllertbautores extends Controller
     public function edit($id){
         $consultaId = DB::table('tbautores')->where('idAutor',$id)->frist();
 
-        return view('#UPDATE',compact('consultaId'));
+        return view('updateAutor',compact('consultaId'));
     }
 
     /**
@@ -77,7 +77,7 @@ class controllertbautores extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(validarAutores $request, $id){
         DB::table('tbautores')->where('idAutor',$id)->update([
             "nombreAutor"=> $request->input('txtNombreAutor'),
             "fechaNacimiento"=> $request->input('txtNacimientoAutor'),
@@ -85,7 +85,7 @@ class controllertbautores extends Controller
             "updated_at"=> Carbon::now()
         ]);
 
-        return redirect('autores')->with('autorActualizado','Exitosamente');
+        return redirect('consultaAutores')->with('autorActualizado','Exitosamente');
     }
 
     /**
@@ -97,6 +97,6 @@ class controllertbautores extends Controller
     public function destroy($id){
         DB::table('tbautores')->where('idAutor',$id)->delete();
 
-        return redirect('autores')->with('autorEliminado','Exitosamente');
+        return redirect('consultaAutores')->with('autorEliminado','Exitosamente');
     }
 }
