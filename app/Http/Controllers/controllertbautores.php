@@ -26,7 +26,7 @@ class controllertbautores extends Controller
      */
     public function create()
     {
-        //
+        return view('autores');
     }
 
     /**
@@ -35,9 +35,15 @@ class controllertbautores extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(validarAutores $request){
+        DB::table('tbautores')->insert([
+            "nombreAutor"=>$request->input('txtNombreAutor'),
+            "fechaNacimiento"=>$request->input('txtNacimientoAutor'),
+            "numLibros"=>$request->input('NLibrosPublicados'),
+            "created_at"=>Carbon::now(),
+            "updated_at"=>Carbon::now()
+        ]);
+        return redirect('autores/create')->with('autorRegistrado','Exitosamente');
     }
 
     /**
@@ -46,9 +52,10 @@ class controllertbautores extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $consultaId = DB::table('tbautores')->where('idAutor',$id)->frist();
+
+        return view('#DELETE',compact('consultaId'));
     }
 
     /**
@@ -57,9 +64,10 @@ class controllertbautores extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $consultaId = DB::table('tbautores')->where('idAutor',$id)->frist();
+
+        return view('#UPDATE',compact('consultaId'));
     }
 
     /**
@@ -69,9 +77,15 @@ class controllertbautores extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        DB::table('tbautores')->where('idAutor',$id)->update([
+            "nombreAutor"=> $request->input('txtNombreAutor'),
+            "fechaNacimiento"=> $request->input('txtNacimientoAutor'),
+            "numLibros"=> $request->input('NLibrosPublicados'),
+            "updated_at"=> Carbon::now()
+        ]);
+
+        return redirect('autores')->with('autorActualizado','Exitosamente');
     }
 
     /**
@@ -80,8 +94,9 @@ class controllertbautores extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        DB::table('tbautores')->where('idAutor',$id)->delete();
+
+        return redirect('autores')->with('autorEliminado','Exitosamente');
     }
 }

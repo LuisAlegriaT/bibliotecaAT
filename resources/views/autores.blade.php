@@ -2,15 +2,17 @@
 @section('content')
     <h1>Registrar Autores</h1>
 
-    @if (session()->has('validado'))
+    @if (session()->has('autorRegistrado'))
         <br>
         <div class="alert alert-success" role="alert">
             ¡Autor Registrado Correctamente!
         </div>      
     @endif
 
-    <form method="POST" action="registerAutor">
+    <form method="POST" action="{{route('autores.store')}}">
         @csrf
+        
+
         <div class="container">
             <div class="row">
                 <div class="col mt-5">
@@ -22,7 +24,7 @@
                     <p class="text-primary fst-italic"> {{ $errors->first('txtNacimientoAutor') }} </p>
                 </div>
                 <div class="col mt-5">
-                    <input type="number" placeholder="No. Libros Publicados" name="NLibrosPublicados" value="{{old('NLibrosPublicados')}}">
+                    <input type="number" placeholder="No. Libros Publicados" name="NLibrosPublicados" min="0" value="{{old('NLibrosPublicados')}}">
                     <p class="text-primary fst-italic"> {{ $errors->first('NLibrosPublicados') }} </p>
                 </div>
             </div>

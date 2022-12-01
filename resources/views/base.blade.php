@@ -8,6 +8,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     </head>
+    
     <body class="p-3 mb-2 bg-dark text-white">
         <div class="container-fluid">
             <div class="row flex-nowrap">
@@ -19,7 +20,7 @@
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
                             <li class="nav-item">
-                                <a href="autores" class="nav-link align-middle px-0">
+                                <a href="{{route('autores.create')}}" class="nav-link align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-light">Registrate Autor</span>
                                 </a>
                             </li>
