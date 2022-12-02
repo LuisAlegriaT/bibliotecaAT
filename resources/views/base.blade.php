@@ -39,7 +39,7 @@
                             </li>
                              --}}
                             <li>
-                                <a href="bookRegister" class="nav-link px-0 align-middle">
+                                <a href="{{route('bookRegister.create')}}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Registra Tu Libro</span></a>
                             </li>
 

@@ -16,7 +16,7 @@ class controllertblibros extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -26,7 +26,8 @@ class controllertblibros extends Controller
      */
     public function create()
     {
-        //
+        $consultaA=DB::table('tbautores')->get();
+        return view('bookRegister',compact('consultaA'));
     }
 
     /**
@@ -35,9 +36,18 @@ class controllertblibros extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(validarLibros $request)
     {
-        //
+        DB::table('tblibros')->insert([
+            "ISBN"=>$request->input('txtISBN'),
+            "titulo"=>$request->input('txtTitulo'),
+            "autorId"=>$request->input('txtAutor'),
+            "paginas"=>$request->input('txtPaginas'),
+            "editorial"=>$request->input('txtEditorial'),
+            "email"=>$request->input('txtEmail'),
+            "updated_at"=>Carbon::now()
+        ]);
+        return redirect('bookRegister/create')->with('libroRegistrado','Exitosamente');
     }
 
     /**

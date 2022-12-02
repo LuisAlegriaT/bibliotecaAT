@@ -2,14 +2,14 @@
 @section('content')
     <h1>Registrar Libro</h1>
 
-    @if (session()->has('validado'))
+    @if (session()->has('libroRegistrado'))
         <br>
         <div class="alert alert-success" role="alert">
             ¡Libro Registrado Correctamente!
         </div>      
     @endif
 
-    <form method="POST" action="registerBook">
+    <form method="POST" action="{{('bookRegister.index')}}">
         @csrf
         <div class="container">
             <div class="row">
@@ -22,7 +22,14 @@
                     <p class="text-primary fst-italic"> {{ $errors->first('txtTitulo')}}</p>
                 </div>
                 <div class="col mt-5">
-                    <input type="text" placeholder="Nombre del Autor" name="txtAutor" value="{{old('txtAutor')}}">
+                    <select class="form-select" name="txtAutor" aria-label="Default select example">
+                        <option selected> Autor...</option>
+
+                        @foreach ($consultaA as $consulta)
+                            <option value="{{$consulta->idAutor}}">{{$consulta->nombreAutor}}</option>
+                        @endforeach
+                    
+                    </select>
                     <p class="text-primary fst-italic"> {{ $errors->first('txtAutor')}}</p>
                 </div>
             </div>
